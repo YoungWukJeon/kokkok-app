@@ -1,0 +1,8 @@
+{
+  "name": "kokkok-web",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "88064ba0"
+}
