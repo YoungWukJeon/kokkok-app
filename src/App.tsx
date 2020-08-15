@@ -10,7 +10,7 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle, homeOutline } from 'ionicons/icons';
+import { ellipse, square, homeOutline } from 'ionicons/icons';
 import Home from './pages/tabs/Home';
 import Tab2 from './pages/tabs/Tab2';
 import Tab3 from './pages/tabs/Tab3';
