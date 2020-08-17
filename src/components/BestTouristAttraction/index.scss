@@ -1,0 +1,41 @@
+.best-tourist-attraction {
+    margin: 0;
+    color: rgb(84, 84, 84);
+    font-weight: bold;
+}
+
+.item-area {
+    padding: 5px 5px;
+}
+
+.best-tourist-attraction-region-name {
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: rgb(84, 84, 84);
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+    border-bottom: 2px solid #72a5d9;
+    padding-bottom: 3px;
+}
+
+.best-tourist-attraction-recommend-count {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: rgb(84, 84, 84);
+    vertical-align: text-top;
+    margin-left: 5px;
+}
+
+.best-tourist-attraction-name {
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: rgb(84, 84, 84);
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+}
+
+.heart-icon {
+    color: rgb(222, 135, 153);
+}

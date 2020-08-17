@@ -1,0 +1,27 @@
+.content-header {
+    font-weight: bold;
+    color: #424242;
+    font-size: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    &:before {
+        content: url('/assets/icon/content_title_bar.svg');
+        height: 16px;
+    }
+}
+
+.region-area {
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(246, 246, 246);
+}
+
+.banner-festival {
+    width: 100%;
+    height: 75px;
+    object-fit: cover;
+}
+
+.best-tourist-attraction-area {
+    background-color: rgb(246, 246, 246);
+}
