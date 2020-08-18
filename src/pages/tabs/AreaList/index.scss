@@ -1,0 +1,28 @@
+.fixed-region-name-bar {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 0.5px solid rgb(95, 95, 95);
+  z-index: 99;
+}
+
+.region-name-area {
+  overflow-x: scroll;
+  white-space: nowrap;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.region-name {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 2px;
+  margin: 1%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.selected-region-name {
+  color: rgb(89, 112, 173);
+  border-bottom: 0.5px solid rgb(89, 112, 173);
+}
