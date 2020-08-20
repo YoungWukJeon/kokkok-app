@@ -2,12 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
+import {Link} from "react-router-dom";
 
 export const includesRegionName = (regions: string[], regionName: string): boolean => {
     return regions.includes(regionName);
 };
 
-const regionName = [
+export const pushRegionName = (regions: string[], regionName: string): string => {
+    return Array.from(new Set([...regions, regionName])).join(",")
+}
+
+const regionNames = [
     "괴산군", "단양군", "보은군",
     "영동군", "옥천군", "음성군", "제천시",
     "증평군", "진천군", "청주시", "충주시"
@@ -19,9 +24,20 @@ const AreaList: React.FC = () => {
 
     useEffect(() => {
         const param = new URLSearchParams(location.search);
-        const arr = Array.from(new Set(param.get('region')?.split(","))).filter(region => region.trim() !== '');
+        const arr =
+            Array.from(
+                new Set(param.get('region')
+                    ?.split(","))
+            ).filter(region => region.trim() !== '');
+
+        console.log("init regions", arr);
         setRegions([...arr]);
     }, []);
+
+    const handleRegionNameClick = (event: React.MouseEvent, region: string) => {
+        // event.target.
+        console.log(event.target);
+    };
 
     return (
         <IonPage>
@@ -37,13 +53,32 @@ const AreaList: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
 
-                {/*todo 지역 버튼을 클릭했을 때, 해당 지역이 선택되고 취소되는 토글 형식의 기능이 필요하고 페이지 이동 기능도 필요(새로운 데이터를 가져오는 호출)*/}
-
                 <div className="fixed-region-name-bar">
                     <div className="region-name-area">
-                        <span className={"region-name " + (regionName.some(region => includesRegionName(regions, region))? '' : 'selected-region-name')}>전체</span>
-                        {regionName.map((region) => (
-                            <span className={"region-name " + (includesRegionName(regions, region)? 'selected-region-name': '')}>{region}</span>
+                        <Link
+                            key='전체'
+                            to={`/areaList`}
+                        >
+                            <span
+                                onClick={(event) => handleRegionNameClick(event, '')}
+                                className={"region-name" + (regionNames.some(region => includesRegionName(regions, region))? '' : ' selected-region-name')}
+                            >
+                                전체
+                            </span>
+                        </Link>
+                        {regionNames.map((region) => (
+                            <Link
+                                key={region}
+                                to={`/areaList?region=${pushRegionName(regions, region)}`}
+                                onClick={(event) => handleRegionNameClick(event, region)}
+                            >
+                                <span
+
+                                    className={"region-name" + (includesRegionName(regions, region)? ' selected-region-name': '')}
+                                >
+                                    {region}
+                                </span>
+                            </Link>
                         ))}
                     </div>
                 </div>

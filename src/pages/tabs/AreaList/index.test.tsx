@@ -25,4 +25,12 @@ describe('AreaListTest', () => {
 
         expect(includesRegionName(regions, region)).toBeTruthy();
     });
+
+    test('배열에 새로운 요소를 추가 후 ,로 구분된 문자열로 변환(중복이면 제거)', () => {
+        const regions = ["충주시", "청주시"];
+        const regionName = "영동군";
+        const arr: string[] = Array.from(new Set([...regions, regionName]));
+
+        expect(arr.join(",")).toEqual("충주시,청주시,영동군");
+    });
 });
