@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewWillEnter} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
@@ -22,6 +22,10 @@ const AreaList: React.FC = () => {
     const location = useLocation();
     const [regions, setRegions] = useState([] as any);
 
+    const handleRegionNameClick = (event: React.MouseEvent, region: string) => {
+        console.log(event.target);
+    };
+
     useEffect(() => {
         const param = new URLSearchParams(location.search);
         const arr =
@@ -32,12 +36,7 @@ const AreaList: React.FC = () => {
 
         console.log("init regions", arr);
         setRegions([...arr]);
-    }, []);
-
-    const handleRegionNameClick = (event: React.MouseEvent, region: string) => {
-        // event.target.
-        console.log(event.target);
-    };
+    }, [location.search]);
 
     return (
         <IonPage>

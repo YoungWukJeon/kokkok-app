@@ -1,16 +1,16 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs
+    IonApp,
+    IonIcon,
+    IonLabel,
+    IonRouterOutlet,
+    IonTabBar,
+    IonTabButton,
+    IonTabs
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { golfOutline, square, homeOutline } from 'ionicons/icons';
+import {IonReactRouter} from '@ionic/react-router';
+import {golfOutline, square, homeOutline} from 'ionicons/icons';
 import Home from './pages/tabs/Home';
 import AreaList from './pages/tabs/AreaList';
 import Tab3 from './pages/tabs/Tab3';
@@ -35,31 +35,31 @@ import '@ionic/react/css/display.css';
 import './theme/variables.scss';
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/home" component={Home} exact={true} />
-          <Route path="/areaList" component={AreaList} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/areaList" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonIcon icon={homeOutline} />
-          </IonTabButton>
-          <IonTabButton tab="areaList" href="/areaList">
-            <IonIcon icon={golfOutline} />
-            {/*<IonLabel>AreaList</IonLabel>*/}
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+    <IonApp>
+        <IonReactRouter>
+            <IonTabs>
+                <IonRouterOutlet>
+                    <Route path="/home" component={Home} exact={true} />
+                    <Route path="/areaList" component={AreaList} exact={true} />
+                    <Route path="/tab3" component={Tab3} />
+                    {/*<Route path="/" render={() => <Redirect to="/areaList"/>} exact={true} />*/}
+                </IonRouterOutlet>
+                <IonTabBar slot="bottom">
+                    <IonTabButton tab="home" href="/home">
+                        <IonIcon icon={homeOutline}/>
+                    </IonTabButton>
+                    <IonTabButton tab="areaList" href="/areaList">
+                        <IonIcon icon={golfOutline}/>
+                        {/*<IonLabel>AreaList</IonLabel>*/}
+                    </IonTabButton>
+                    <IonTabButton tab="tab3" href="/tab3">
+                        <IonIcon icon={square}/>
+                        <IonLabel>Tab 3</IonLabel>
+                    </IonTabButton>
+                </IonTabBar>
+            </IonTabs>
+        </IonReactRouter>
+    </IonApp>
 );
 
 export default App;
