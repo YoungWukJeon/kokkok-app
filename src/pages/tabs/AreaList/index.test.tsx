@@ -1,6 +1,6 @@
 import 'core-js';
 
-import { includesRegionName } from './index';
+import { includesRegionName, pullRegionName } from './index';
 
 describe('AreaListTest', () => {
     test('문자열을 자르고 중복없는 배열로 변환', () => {
@@ -13,7 +13,7 @@ describe('AreaListTest', () => {
 
     test('빈 문자열 배열로 변환 처리', () => {
         const queryString = null;
-        const queryRegion = queryString !== null? queryString: "";
+        const queryRegion = queryString !== null ? queryString : "";
         const regions = Array.from(new Set(queryRegion.split(","))).filter(region => region.trim() !== '');
 
         expect(regions.length).toEqual(0);
@@ -32,5 +32,25 @@ describe('AreaListTest', () => {
         const arr: string[] = Array.from(new Set([...regions, regionName]));
 
         expect(arr.join(",")).toEqual("충주시,청주시,영동군");
+    });
+
+    test('배열에 존재하는 특정 요소 삭제', () => {
+        const regions = ["충주시", "청주시", "영동군"];
+        const regionName = "청주시";
+        const index = regions.findIndex((region) => region === regionName);
+
+        if (index > -1) {
+            regions.splice(index, 1);
+        }
+
+        expect(regions).toEqual(["충주시", "영동군"]);
+    });
+
+    test('배열 요소를 제거한 후 ,로 연결', () => {
+        const regions = ["충주시", "청주시", "영동군"];
+        const regionName = "청주시";
+        const result = pullRegionName(regions, regionName);
+
+        expect(result).toEqual("충주시,영동군");
     });
 });

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewWillEnter} from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
@@ -10,7 +10,18 @@ export const includesRegionName = (regions: string[], regionName: string): boole
 
 export const pushRegionName = (regions: string[], regionName: string): string => {
     return Array.from(new Set([...regions, regionName])).join(",")
-}
+};
+
+export const pullRegionName = (regions: string[], regionName: string): string => {
+    const tempArray = [...regions];
+    const index = regions.findIndex((region: string) => region === regionName);
+
+    if (index > -1) {
+        tempArray.splice(index, 1);
+    }
+
+    return Array.from(new Set(tempArray)).join(",");
+};
 
 const regionNames = [
     "괴산군", "단양군", "보은군",
@@ -22,8 +33,11 @@ const AreaList: React.FC = () => {
     const location = useLocation();
     const [regions, setRegions] = useState([] as any);
 
-    const handleRegionNameClick = (event: React.MouseEvent, region: string) => {
-        console.log(event.target);
+    const routeRegionNames = (regionName: string): string => {
+        if (includesRegionName(regions, regionName)) {
+            return pullRegionName(regions, regionName);
+        }
+        return pushRegionName(regions, regionName);
     };
 
     useEffect(() => {
@@ -59,7 +73,6 @@ const AreaList: React.FC = () => {
                             to={`/areaList`}
                         >
                             <span
-                                onClick={(event) => handleRegionNameClick(event, '')}
                                 className={"region-name" + (regionNames.some(region => includesRegionName(regions, region))? '' : ' selected-region-name')}
                             >
                                 전체
@@ -68,11 +81,9 @@ const AreaList: React.FC = () => {
                         {regionNames.map((region) => (
                             <Link
                                 key={region}
-                                to={`/areaList?region=${pushRegionName(regions, region)}`}
-                                onClick={(event) => handleRegionNameClick(event, region)}
+                                to={`/areaList?region=${routeRegionNames(region)}`}
                             >
                                 <span
-
                                     className={"region-name" + (includesRegionName(regions, region)? ' selected-region-name': '')}
                                 >
                                     {region}
