@@ -13,7 +13,7 @@ const RegionName: React.FC<RegionNameProps> = ({ name, fullName, color }) => {
     }
 
     return (
-        <Link to={`/areaList?region=${fullName}`}>
+        <Link to={`/touristAttractionList?region=${fullName}`}>
             <svg width="50" height="50" style={style}>
                 <circle cx="25" cy="25" r="20" fill={color} />
                 <circle cx="25" cy="25" r="16" fill="white" />

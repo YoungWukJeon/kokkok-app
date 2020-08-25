@@ -1,6 +1,7 @@
 .fixed-region-name-bar {
   position: fixed;
   width: 100%;
+  background-color: white;
   overflow: hidden;
   border-bottom: 0.5px solid rgb(95, 95, 95);
   z-index: 99;
@@ -30,4 +31,11 @@
 .selected-region-name {
   color: rgb(89, 112, 173);
   border-bottom: 0.5px solid rgb(89, 112, 173);
+}
+
+#list-container {
+  position: absolute;
+  top: calc(2% + 36px);
+  background-color: rgb(246, 246, 246);
+  width: 100%;
 }

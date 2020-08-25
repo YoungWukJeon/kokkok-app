@@ -15,7 +15,7 @@ const BestTouristAttraction: React.FC<BestTouristAttractionProps> = ({
   regionName,
   recommendCount,
   name,
-  imageUrl,
+  imageUrl
 }) => {
   return (
     <IonCard className="best-tourist-attraction">

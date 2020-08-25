@@ -12,7 +12,7 @@ import {
 import {IonReactRouter} from '@ionic/react-router';
 import {golfOutline, square, homeOutline} from 'ionicons/icons';
 import Home from './pages/tabs/Home';
-import AreaList from './pages/tabs/AreaList';
+import TouristAttractionList from './pages/tabs/TouristAttractionList';
 import Tab3 from './pages/tabs/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
@@ -40,7 +40,7 @@ const App: React.FC = () => (
             <IonTabs>
                 <IonRouterOutlet>
                     <Route path="/home" component={Home} exact={true} />
-                    <Route path="/areaList" component={AreaList} exact={true} />
+                    <Route path="/touristAttractionList" component={TouristAttractionList} exact={true} />
                     <Route path="/tab3" component={Tab3} />
                     {/*<Route path="/" render={() => <Redirect to="/areaList"/>} exact={true} />*/}
                 </IonRouterOutlet>
@@ -48,9 +48,9 @@ const App: React.FC = () => (
                     <IonTabButton tab="home" href="/home">
                         <IonIcon icon={homeOutline}/>
                     </IonTabButton>
-                    <IonTabButton tab="areaList" href="/areaList">
+                    <IonTabButton tab="touristAttractionList" href="/touristAttractionList">
                         <IonIcon icon={golfOutline}/>
-                        {/*<IonLabel>AreaList</IonLabel>*/}
+                        {/*<IonLabel>TouristAttractionList</IonLabel>*/}
                     </IonTabButton>
                     <IonTabButton tab="tab3" href="/tab3">
                         <IonIcon icon={square}/>

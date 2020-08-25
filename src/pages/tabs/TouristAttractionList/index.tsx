@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
+
+import TouristAttraction from "../../../components/TouristAttraction";
 
 export const includesRegionName = (regions: string[], regionName: string): boolean => {
     return regions.includes(regionName);
@@ -29,7 +31,7 @@ const regionNames = [
     "증평군", "진천군", "청주시", "충주시"
 ];
 
-const AreaList: React.FC = () => {
+const TouristAttractionList: React.FC = () => {
     const location = useLocation();
     const [regions, setRegions] = useState([] as any);
 
@@ -70,7 +72,7 @@ const AreaList: React.FC = () => {
                     <div className="region-name-area">
                         <Link
                             key='전체'
-                            to={`/areaList`}
+                            to={`/touristAttractionList`}
                         >
                             <span
                                 className={"region-name" + (regionNames.some(region => includesRegionName(regions, region))? '' : ' selected-region-name')}
@@ -81,7 +83,7 @@ const AreaList: React.FC = () => {
                         {regionNames.map((region) => (
                             <Link
                                 key={region}
-                                to={`/areaList?region=${routeRegionNames(region)}`}
+                                to={`/touristAttractionList?region=${routeRegionNames(region)}`}
                             >
                                 <span
                                     className={"region-name" + (includesRegionName(regions, region)? ' selected-region-name': '')}
@@ -93,10 +95,15 @@ const AreaList: React.FC = () => {
                     </div>
                 </div>
 
+                {/*<div id="list-container">*/}
+                <IonList id="list-container">
+                    <TouristAttraction />
+                </IonList>
+                {/*</div>*/}
 
             </IonContent>
         </IonPage>
     );
 };
 
-export default AreaList;
+export default TouristAttractionList;
