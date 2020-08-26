@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList} from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonLabel} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
@@ -62,13 +62,13 @@ const TouristAttractionList: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">관광지 정보 보기</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+                {/*<IonHeader collapse="condense">*/}
+                {/*    <IonToolbar>*/}
+                {/*        <IonTitle size="large">관광지 정보 보기</IonTitle>*/}
+                {/*    </IonToolbar>*/}
+                {/*</IonHeader>*/}
 
-                <div className="fixed-region-name-bar">
+                <IonList className="fixed-region-name-bar">
                     <div className="region-name-area">
                         <Link
                             key='전체'
@@ -93,11 +93,44 @@ const TouristAttractionList: React.FC = () => {
                             </Link>
                         ))}
                     </div>
-                </div>
+                </IonList>
 
                 {/*<div id="list-container">*/}
                 <IonList id="list-container">
-                    <TouristAttraction />
+                    <div id="container-wrapper">
+                        <TouristAttraction
+                            key="괴산 문화원"
+                            name="괴산 문화원"
+                            imageUrl="/assets/images/best01.png"
+                            address="충북 괴산군 괴산읍 읍내로 268"
+                            sharedCount={2}
+                            recommendCount={0}
+                        />
+                        <TouristAttraction
+                            key="괴산 문화원2"
+                            name="괴산 문화원2"
+                            imageUrl="/assets/images/best02.png"
+                            address="충북 괴산군 괴산읍 읍내로 268"
+                            sharedCount={2}
+                            recommendCount={0}
+                        />
+                        <TouristAttraction
+                            key="괴산 문화원3"
+                            name="괴산 문화원3"
+                            imageUrl="/assets/images/best03.png"
+                            address="충북 괴산군 괴산읍 읍내로 268"
+                            sharedCount={2}
+                            recommendCount={0}
+                        />
+                        <TouristAttraction
+                            key="괴산 문화원4"
+                            name="괴산 문화원4"
+                            imageUrl="/assets/images/best04.png"
+                            address="충북 괴산군 괴산읍 읍내로 268"
+                            sharedCount={2}
+                            recommendCount={0}
+                        />
+                    </div>
                 </IonList>
                 {/*</div>*/}
 

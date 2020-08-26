@@ -1,8 +1,9 @@
 .fixed-region-name-bar {
   position: fixed;
+  padding: 0;
   width: 100%;
-  background-color: white;
-  overflow: hidden;
+  //background-color: white;
+  //overflow: hidden;
   border-bottom: 0.5px solid rgb(95, 95, 95);
   z-index: 99;
 }
@@ -36,6 +37,12 @@
 #list-container {
   position: absolute;
   top: calc(2% + 36px);
+  //height: 100%;
   background-color: rgb(246, 246, 246);
   width: 100%;
+  padding: 0;
+}
+
+#container-wrapper {
+  //height: 100%;
 }
