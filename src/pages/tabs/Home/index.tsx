@@ -12,7 +12,8 @@ import {
     IonImg,
     IonGrid,
     IonRow,
-    IonCol
+    IonCol,
+    IonItem
 } from "@ionic/react";
 
 import RegionName from "../../../components/RegionName";
@@ -188,11 +189,11 @@ const Home: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">충북 콕! 콕!</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+                {/*<IonHeader collapse="condense">*/}
+                {/*    <IonToolbar>*/}
+                {/*        <IonTitle size="large">충북 콕! 콕!</IonTitle>*/}
+                {/*    </IonToolbar>*/}
+                {/*</IonHeader>*/}
 
                 <IonSlides
                     onIonSlideDidChange={() => menuSlides.current.startAutoplay()}
@@ -214,6 +215,7 @@ const Home: React.FC = () => {
 
                 <IonList>
                     <IonListHeader className="content-header">지역별 명소</IonListHeader>
+
                     <div className="region-area">
                         {regionInfos.map((region) => (
                             <RegionName
