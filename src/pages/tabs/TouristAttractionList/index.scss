@@ -6,6 +6,7 @@
   //overflow: hidden;
   border-bottom: 0.5px solid rgb(95, 95, 95);
   z-index: 99;
+  margin-top: -5px;
 }
 
 .region-name-area {
@@ -23,7 +24,7 @@
 .region-name {
   display: inline-block;
   text-align: center;
-  padding: 10px 2px;
+  padding: 10px 2px 5px 2px;
   margin: 1%;
   font-size: 16px;
   font-weight: bold;
@@ -36,7 +37,7 @@
 
 #list-container {
   position: absolute;
-  top: calc(2% + 36px);
+  top: calc(2% + 30px);
   //height: 100%;
   background-color: rgb(246, 246, 246);
   width: 100%;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonLabel} from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList} from '@ionic/react';
 import './index.scss';
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
@@ -62,12 +62,6 @@ const TouristAttractionList: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {/*<IonHeader collapse="condense">*/}
-                {/*    <IonToolbar>*/}
-                {/*        <IonTitle size="large">관광지 정보 보기</IonTitle>*/}
-                {/*    </IonToolbar>*/}
-                {/*</IonHeader>*/}
-
                 <IonList className="fixed-region-name-bar">
                     <div className="region-name-area">
                         <Link
@@ -95,7 +89,6 @@ const TouristAttractionList: React.FC = () => {
                     </div>
                 </IonList>
 
-                {/*<div id="list-container">*/}
                 <IonList id="list-container">
                     <div id="container-wrapper">
                         <TouristAttraction
@@ -132,8 +125,6 @@ const TouristAttractionList: React.FC = () => {
                         />
                     </div>
                 </IonList>
-                {/*</div>*/}
-
             </IonContent>
         </IonPage>
     );
