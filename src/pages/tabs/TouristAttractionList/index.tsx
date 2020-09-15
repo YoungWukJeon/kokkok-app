@@ -10,7 +10,8 @@ import {
     IonRefresherContent,
     IonInfiniteScroll,
     IonInfiniteScrollContent,
-    useIonViewWillEnter
+    useIonViewWillEnter,
+    IonSpinner
 } from '@ionic/react';
 import {RefresherEventDetail} from '@ionic/core';
 
@@ -20,6 +21,7 @@ import {Link} from "react-router-dom";
 import TouristAttraction from "../../../components/TouristAttraction";
 
 import './index.scss';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const includesRegionName = (regions: string[], regionName: string): boolean => {
     return regions.includes(regionName);
@@ -95,6 +97,7 @@ const TouristAttractionList: React.FC = () => {
     const [regions, setRegions] = useState<any[]>([]);
     const [touristAttractions, setTouristAttractions] = useState<any[]>([]);
     const [disableInfiniteScroll, setDisableInfiniteScroll] = useState<boolean>(false);
+    const [hasMore, setHasMore] = useState<boolean>(true);
 
     const routeRegionNames = (regionName: string): string => {
         if (includesRegionName(regions, regionName)) {
@@ -127,7 +130,8 @@ const TouristAttractionList: React.FC = () => {
         }
     }
 
-    const searchNext = (event: CustomEvent<void>) => {
+    // const searchNext = (event: CustomEvent<void>) => {
+    const searchNext = () => {
         console.log("Begin async operation(infinite scroll)");
 
         setTimeout(() => {
@@ -142,8 +146,8 @@ const TouristAttractionList: React.FC = () => {
                     recommendCount: 0
                 }
             ]);
-            (event.target as HTMLIonInfiniteScrollElement).complete();
-        }, 1000);
+            // (event.target as HTMLIonInfiniteScrollElement).complete();
+        }, 2000);
     };
 
     useIonViewWillEnter(() => {
@@ -186,33 +190,49 @@ const TouristAttractionList: React.FC = () => {
                     </div>
                 </IonList>
 
-                <IonRefresher onIonRefresh={doRefresh}>
-                    <IonRefresherContent />
-                </IonRefresher>
+                {/*<IonRefresher onIonRefresh={doRefresh}>*/}
+                {/*    <IonRefresherContent />*/}
+                {/*</IonRefresher>*/}
 
                 <IonList id="list-container">
                     <div id="container-wrapper">
-                        {touristAttractions.map((touristAttractionInfo, index) => (
-                            <TouristAttraction
-                                key={index}
-                                name={touristAttractionInfo.name}
-                                imageUrl={touristAttractionInfo.imageUrl}
-                                address={touristAttractionInfo.address}
-                                sharedCount={touristAttractionInfo.sharedCount}
-                                recommendCount={touristAttractionInfo.recommendCount}
-                            />
-                        ))}
+                        <InfiniteScroll
+                            dataLength={touristAttractions.length}
+                            next={searchNext}
+                            hasMore={hasMore}
+                            loader={
+                                <IonSpinner
+                                    name={"dots"}
+                                />
+                            }
+                            // height={500}
+                            scrollableTarget="container-wrapper"
+                            // pullDownToRefresh
+                            // refreshFunction={searchNext}
+                        >
+                            {touristAttractions.map((touristAttractionInfo, index) => (
+                                <TouristAttraction
+                                    key={index}
+                                    name={touristAttractionInfo.name}
+                                    imageUrl={touristAttractionInfo.imageUrl}
+                                    address={touristAttractionInfo.address}
+                                    sharedCount={touristAttractionInfo.sharedCount}
+                                    recommendCount={touristAttractionInfo.recommendCount}
+                                />
+                            ))}
+                        </InfiniteScroll>
                     </div>
                 </IonList>
 
-                <IonInfiniteScroll
-                    threshold="5%"
-                    disabled={disableInfiniteScroll}
-                    onIonInfinite={(e: CustomEvent<void>) => searchNext(e)}>
-                    <IonInfiniteScrollContent
-                        loadingSpinner="circular"
-                        loadingText="Loading more good doggos..." />
-                </IonInfiniteScroll>
+
+                {/*<IonInfiniteScroll*/}
+                {/*    threshold="5%"*/}
+                {/*    disabled={disableInfiniteScroll}*/}
+                {/*    onIonInfinite={(e: CustomEvent<void>) => searchNext(e)}>*/}
+                {/*    <IonInfiniteScrollContent*/}
+                {/*        loadingSpinner="circular"*/}
+                {/*        loadingText="Loading more good doggos..." />*/}
+                {/*</IonInfiniteScroll>*/}
             </IonContent>
         </IonPage>
     );
