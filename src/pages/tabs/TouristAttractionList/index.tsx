@@ -130,7 +130,6 @@ const TouristAttractionList: React.FC = () => {
         }
     }
 
-    // const searchNext = (event: CustomEvent<void>) => {
     const searchNext = () => {
         console.log("Begin async operation(infinite scroll)");
 
@@ -146,8 +145,7 @@ const TouristAttractionList: React.FC = () => {
                     recommendCount: 0
                 }
             ]);
-            // (event.target as HTMLIonInfiniteScrollElement).complete();
-        }, 2000);
+        }, 1500);
     };
 
     useIonViewWillEnter(() => {
@@ -195,20 +193,22 @@ const TouristAttractionList: React.FC = () => {
                 {/*</IonRefresher>*/}
 
                 <IonList id="list-container">
-                    <div id="container-wrapper">
+                    <div>
+                        {/*https://openbase.io/js/react-infinite-scroll-component*/}
                         <InfiniteScroll
                             dataLength={touristAttractions.length}
                             next={searchNext}
                             hasMore={hasMore}
                             loader={
                                 <IonSpinner
-                                    name={"dots"}
+                                    name={"lines-small"}
+                                    style={{ left: "50%" }}
                                 />
                             }
-                            // height={500}
-                            scrollableTarget="container-wrapper"
-                            // pullDownToRefresh
+                            // height={300}
+                            // pullDownToRefresh={true}
                             // refreshFunction={searchNext}
+                            scrollableTarget="list-container"
                         >
                             {touristAttractions.map((touristAttractionInfo, index) => (
                                 <TouristAttraction
@@ -223,16 +223,6 @@ const TouristAttractionList: React.FC = () => {
                         </InfiniteScroll>
                     </div>
                 </IonList>
-
-
-                {/*<IonInfiniteScroll*/}
-                {/*    threshold="5%"*/}
-                {/*    disabled={disableInfiniteScroll}*/}
-                {/*    onIonInfinite={(e: CustomEvent<void>) => searchNext(e)}>*/}
-                {/*    <IonInfiniteScrollContent*/}
-                {/*        loadingSpinner="circular"*/}
-                {/*        loadingText="Loading more good doggos..." />*/}
-                {/*</IonInfiniteScroll>*/}
             </IonContent>
         </IonPage>
     );
