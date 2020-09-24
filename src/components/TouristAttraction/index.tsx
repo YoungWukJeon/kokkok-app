@@ -17,7 +17,7 @@ const TouristAttraction: React.FC<TouristAttractionProps> = ({
 }) => {
     return (
         <IonCard>
-            <IonItem detail={true} lines="full">
+            <IonItem detail={true} lines="full" routerLink="/touristAttractionDetail/1">
                 <IonLabel>{name}</IonLabel>
             </IonItem>
 

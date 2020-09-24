@@ -33,10 +33,14 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.scss';
+import TouristAttractionDetail from "./pages/common/TouristAttractionDetail";
 
 const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
+            <IonRouterOutlet>
+                <Route path="/touristAttractionDetail/{id}" component={TouristAttractionDetail} />
+            </IonRouterOutlet>
             <IonTabs>
                 <IonRouterOutlet>
                     <Route path="/home" component={Home} exact={true} />

@@ -193,35 +193,33 @@ const TouristAttractionList: React.FC = () => {
                 {/*</IonRefresher>*/}
 
                 <IonList id="list-container">
-                    <div>
-                        {/*https://openbase.io/js/react-infinite-scroll-component*/}
-                        <InfiniteScroll
-                            dataLength={touristAttractions.length}
-                            next={searchNext}
-                            hasMore={hasMore}
-                            loader={
-                                <IonSpinner
-                                    name={"lines-small"}
-                                    style={{ left: "50%" }}
-                                />
-                            }
-                            // height={300}
-                            // pullDownToRefresh={true}
-                            // refreshFunction={searchNext}
-                            scrollableTarget="list-container"
-                        >
-                            {touristAttractions.map((touristAttractionInfo, index) => (
-                                <TouristAttraction
-                                    key={index}
-                                    name={touristAttractionInfo.name}
-                                    imageUrl={touristAttractionInfo.imageUrl}
-                                    address={touristAttractionInfo.address}
-                                    sharedCount={touristAttractionInfo.sharedCount}
-                                    recommendCount={touristAttractionInfo.recommendCount}
-                                />
-                            ))}
-                        </InfiniteScroll>
-                    </div>
+                    {/*https://openbase.io/js/react-infinite-scroll-component*/}
+                    <InfiniteScroll
+                        dataLength={touristAttractions.length}
+                        next={searchNext}
+                        hasMore={hasMore}
+                        loader={
+                            <IonSpinner
+                                name={"lines-small"}
+                                style={{ left: "50%" }}
+                            />
+                        }
+                        // height={300}
+                        // pullDownToRefresh={true}
+                        // refreshFunction={searchNext}
+                        scrollableTarget="list-container"
+                    >
+                        {touristAttractions.map((touristAttractionInfo, index) => (
+                            <TouristAttraction
+                                key={index}
+                                name={touristAttractionInfo.name}
+                                imageUrl={touristAttractionInfo.imageUrl}
+                                address={touristAttractionInfo.address}
+                                sharedCount={touristAttractionInfo.sharedCount}
+                                recommendCount={touristAttractionInfo.recommendCount}
+                            />
+                        ))}
+                    </InfiniteScroll>
                 </IonList>
             </IonContent>
         </IonPage>
