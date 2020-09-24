@@ -6,14 +6,9 @@ import {
     IonTitle,
     IonToolbar,
     IonList,
-    IonRefresher,
-    IonRefresherContent,
-    IonInfiniteScroll,
-    IonInfiniteScrollContent,
     useIonViewWillEnter,
     IonSpinner
 } from '@ionic/react';
-import {RefresherEventDetail} from '@ionic/core';
 
 import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
@@ -42,15 +37,6 @@ export const pullRegionName = (regions: string[], regionName: string): string =>
     return Array.from(new Set(tempArray)).join(",");
 };
 
-const doRefresh = (event: CustomEvent<RefresherEventDetail>) => {
-    console.log("Begin async operation");
-
-    setTimeout(() => {
-        console.log("Async operation has ended");
-        event.detail.complete();
-    }, 2000);
-};
-
 const regionNames = [
     "괴산군", "단양군", "보은군",
     "영동군", "옥천군", "음성군", "제천시",
@@ -59,7 +45,7 @@ const regionNames = [
 
 const touristAttractionInfos = [
     {
-        // key: "괴산 문화원1",
+        no: 1,
         name: "괴산 문화원",
         imageUrl: "/assets/images/best01.png",
         address: "충북 괴산군 괴산읍 읍내로 268",
@@ -67,7 +53,7 @@ const touristAttractionInfos = [
         recommendCount: 0
     },
     {
-        // key: "괴산 문화원2",
+        no: 2,
         name: "괴산 문화원",
         imageUrl: "/assets/images/best02.png",
         address: "충북 괴산군 괴산읍 읍내로 268",
@@ -75,7 +61,7 @@ const touristAttractionInfos = [
         recommendCount: 0
     },
     {
-        // key: "괴산 문화원3",
+        no: 3,
         name: "괴산 문화원",
         imageUrl: "/assets/images/best03.png",
         address: "충북 괴산군 괴산읍 읍내로 268",
@@ -83,7 +69,7 @@ const touristAttractionInfos = [
         recommendCount: 0
     },
     {
-        // key: "괴산 문화원4",
+        no: 4,
         name: "괴산 문화원",
         imageUrl: "/assets/images/best04.png",
         address: "충북 괴산군 괴산읍 읍내로 268",
@@ -137,7 +123,7 @@ const TouristAttractionList: React.FC = () => {
             console.log("Async operation has ended(infinite scroll)");
             insert([
                 {
-                    // key: "괴산 문화원" + (touristAttractions.length + 1),
+                    no: touristAttractions.length + 1,
                     name: "괴산 문화원",
                     imageUrl: "/assets/images/best01.png",
                     address: "충북 괴산군 괴산읍 읍내로 268",
@@ -212,6 +198,7 @@ const TouristAttractionList: React.FC = () => {
                         {touristAttractions.map((touristAttractionInfo, index) => (
                             <TouristAttraction
                                 key={index}
+                                no={touristAttractionInfo.no}
                                 name={touristAttractionInfo.name}
                                 imageUrl={touristAttractionInfo.imageUrl}
                                 address={touristAttractionInfo.address}

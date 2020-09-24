@@ -12,8 +12,7 @@ import {
     IonImg,
     IonGrid,
     IonRow,
-    IonCol,
-    IonItem
+    IonCol
 } from "@ionic/react";
 
 import RegionName from "../../../components/RegionName";
@@ -134,24 +133,28 @@ const festivalBannerUrls = [
 
 const bestTouristAttractionInfos = [
     {
+        no: 1,
         regionName: "괴산",
         recommendCount: 6,
         name: "괴산청결고추박물관",
         imageUrl: "/assets/images/best01.png"
     },
     {
+        no: 2,
         regionName: "괴산",
         recommendCount: 3,
         name: "괴산한지체험박물관",
         imageUrl: "/assets/images/best02.png"
     },
     {
+        no: 3,
         regionName: "보은",
         recommendCount: 2,
         name: "솔향공원",
         imageUrl: "/assets/images/best03.png"
     },
     {
+        no: 4,
         regionName: "영동",
         recommendCount: 1,
         name: "난계국악기체험전수관",
@@ -255,6 +258,7 @@ const Home: React.FC = () => {
                                 {rowTouristAttractionInfos.map((touristAttractionInfo) => (
                                     <IonCol>
                                         <BestTouristAttraction
+                                            no={touristAttractionInfo.no}
                                             regionName={touristAttractionInfo.regionName}
                                             recommendCount={touristAttractionInfo.recommendCount}
                                             name={touristAttractionInfo.name}

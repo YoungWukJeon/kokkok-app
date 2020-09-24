@@ -5,6 +5,7 @@ import { locationSharp, shareOutline, heart } from "ionicons/icons";
 import "./index.scss";
 
 interface TouristAttractionProps {
+    no: number,
     name: string,
     imageUrl: string,
     address: string,
@@ -13,11 +14,11 @@ interface TouristAttractionProps {
 }
 
 const TouristAttraction: React.FC<TouristAttractionProps> = ({
-    name, imageUrl, address, sharedCount, recommendCount
+    no, name, imageUrl, address, sharedCount, recommendCount
 }) => {
     return (
         <IonCard>
-            <IonItem detail={true} lines="full" routerLink="/touristAttractionDetail/1">
+            <IonItem detail={true} lines="full" routerLink={`/touristAttractionList/touristAttractionDetail/${no}`}>
                 <IonLabel>{name}</IonLabel>
             </IonItem>
 

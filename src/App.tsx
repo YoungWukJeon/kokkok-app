@@ -38,14 +38,13 @@ import TouristAttractionDetail from "./pages/common/TouristAttractionDetail";
 const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
-            <IonRouterOutlet>
-                <Route path="/touristAttractionDetail/{id}" component={TouristAttractionDetail} />
-            </IonRouterOutlet>
             <IonTabs>
                 <IonRouterOutlet>
                     <Route path="/home" component={Home} exact={true} />
                     <Route path="/touristAttractionList" component={TouristAttractionList} exact={true} />
                     <Route path="/tab3" component={Tab3} />
+
+                    <Route path="/touristAttractionList/touristAttractionDetail/:id" component={TouristAttractionDetail} />
                     {/*<Route path="/" render={() => <Redirect to="/areaList"/>} exact={true} />*/}
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
