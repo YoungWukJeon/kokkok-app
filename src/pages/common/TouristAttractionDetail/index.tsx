@@ -26,6 +26,17 @@ const touristAttractionInfo = {
     recommendCount: 0
 };
 
+const touristAttractionComment = {
+    no: 1,
+    nickname: '',
+    kind: 'area',
+    itemId: '',
+    level: 1,
+    parentItemId: '',
+    date: '',
+    content: ''
+};
+
 interface MatchParams {
     id: string
 }
