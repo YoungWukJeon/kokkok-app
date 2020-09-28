@@ -16,7 +16,7 @@ const BestTouristAttraction: React.FC<BestTouristAttractionProps> = ({
     no, regionName, recommendCount, name, imageUrl
 }) => {
     return (
-        <IonCard className="best-tourist-attraction" routerLink={`/touristAttractionList/touristAttractionDetail/${no}`}>
+        <IonCard className="best-tourist-attraction" routerLink={`/touristAttractions/${no}`}>
             <div className="item-area">
                 <span className="best-tourist-attraction-region-name">
                   {regionName}

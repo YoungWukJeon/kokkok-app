@@ -35,23 +35,48 @@ import '@ionic/react/css/display.css';
 import './theme/variables.scss';
 import TouristAttractionDetail from "./pages/common/TouristAttractionDetail";
 
+const routes = [
+    {
+        path: "/home",
+        component: Home,
+        exact: true
+    },
+    {
+        path: "/touristAttractions",
+        component: TouristAttractionList,
+        exact: true
+    },
+    {
+        path: "/touristAttractions/:no",
+        component: TouristAttractionDetail
+    },
+    {
+        path: "/Tab3",
+        component: Tab3,
+        exact: true
+    },
+];
+
 const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
             <IonTabs>
                 <IonRouterOutlet>
-                    <Route path="/home" component={Home} exact={true} />
-                    <Route path="/touristAttractionList" component={TouristAttractionList} exact={true} />
-                    <Route path="/tab3" component={Tab3} />
-
-                    <Route path="/touristAttractionList/touristAttractionDetail/:id" component={TouristAttractionDetail} />
                     {/*<Route path="/" render={() => <Redirect to="/areaList"/>} exact={true} />*/}
+                    {routes.map((route, index) => (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            exact={route.exact}
+                            component={route.component}
+                        />
+                    ))}
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="home" href="/home">
                         <IonIcon icon={homeOutline}/>
                     </IonTabButton>
-                    <IonTabButton tab="touristAttractionList" href="/touristAttractionList">
+                    <IonTabButton tab="touristAttractions" href="/touristAttractions">
                         <IonIcon icon={golfOutline}/>
                         {/*<IonLabel>TouristAttractionList</IonLabel>*/}
                     </IonTabButton>
@@ -64,5 +89,6 @@ const App: React.FC = () => (
         </IonReactRouter>
     </IonApp>
 );
+
 
 export default App;
